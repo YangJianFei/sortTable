@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+<!--#include virtual="/pages/resource/resource.html"-->
+<link href="../../css/resource/course.css" rel="stylesheet">
+<!--[if lt IE 10]>
+<link href="../../css/polyfill.css" rel="stylesheet">
+<![endif]-->
+<body class="mainbody">
+
+<div class="header">
+    <!--#include virtual="/pages/header.html"-->
+</div>
+<div style="clear:both;"></div>
+<div class="maincontent">
+    <!--#include virtual="/pages/resource/resourceleft.html"-->
+    <div class="main">
+    <div class="contentwrap">
+        <div class="navigation">
+            <ol class="breadcrumb i18n-course-title">
+                <li><a href="javascript:;" class="label-resource"><!-- 资源 --></a></li>
+                <li class="active"><!-- 课程列表 --></li>
+            </ol>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body tableSortParent">
+                <div class="table-operate">
+                    <div class="btn-group" style="float: left">
+                        <button id="btn-add-course" disabled type="button" class="btn btn-normal btn-success"
+                                style="border-radius:4px;" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expaded="false"><!-- 添加课程 -->
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="add-course">
+                            <li><a class="add-course-single" href="javascript:;"><!-- 单个添加 --></a></li>
+                            <li><a href="javascript:;" class="i18n-batch-addcourse" data-toggle="modal"
+                                   data-target="#batch-import-modal" id="batch-import"
+                                   style="text-align:left;"><!-- 批量导入 --></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="filter-result">
+                        <div class="result-item sort-result dn">
+                            <span class="result-name"></span>:
+                            <span class="result-value"></span>
+                            <span class="btn-close-result"><i class="iconfont icon-cuowu"></i></span>
+                        </div>
+                        <i class="iconfont icon-houtui iconnav dn btn-pre"></i>
+                        <div class="filter-more-result">
+                            <div class="filter-all-result">
+                                <div class="result-item class-result dn">
+                                    <span class="result-name">课程分类</span>:
+                                    <span class="result-value"></span>
+                                    <span class="btn-close-result"><i class="iconfont icon-cuowu"></i></span>
+                                </div>
+                                <div class="result-item type-result dn">
+                                    <span class="result-name">课程类型</span>:
+                                    <span class="result-value"></span>
+                                    <span class="btn-close-result"><i class="iconfont icon-cuowu"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <i class="iconfont icon-qianjin iconnav dn btn-next"></i>
+                    </div>
+                    <div class="btn-group input-search-group">
+                        <i class="iconfont icon-search search"></i>
+                        <input type="text" class="form-control input-search">
+                    </div>
+                    <!--选择表格操作按钮-->
+                    <div class="operate-group">
+                        <ul>
+                            <li><a href="javascript:;" class="selectedcount">已选中X项</a></li>
+                            <li><a href="javascript:;" class="stick">置顶</a></li>
+                            <li><a href="javascript:;" class="delcourse">删除</a></li>
+                            <li><a href="javascript:;" class="setmanager">管理授权</a></li>
+                        </ul>
+                        <i class="iconfont icon-cuowu btn-remove-operate"></i>
+                    </div>
+                </div>
+                <div style="clear: both"></div>
+                <div class="content">
+                    <div class="myscroll">
+                        <table id="usertable" class="table table-hover tableSort">
+                            <colgroup>
+                                <col style="width:4%;">
+                                <col style="width:47%;">
+                                <col style="width:13%;">
+                                <col style="width:13%;">
+                                <col style="width:13%">
+                            </colgroup>
+                            <thead class="table-title">
+                                <tr class="i18n-course-thead">
+                                    <th type="nosort"><input type="checkbox" class="allcheck"></th>
+                                    <th><span class="th-coursename"></span><!-- 课程名称 --></th>
+                                    <th>
+                                        <span>
+                                            <span class="th-courseclass"></span><!-- 课程分类 -->
+                                            <i class="iconfont icon-jiantou  dropdown-toggle btn-filter dn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></i>
+                                            <div class="dropdown-menu filter-component">
+                                                <div class="filter-sort-list"></div>
+                                                <div class="filter-form">
+                                                    <div class="filter-head">
+                                                        <i class="iconfont icon-shaixuan"></i>筛选
+                                                    </div>
+                                                    <div class="filter-body">
+                                                        <div class="filter-search">
+                                                            <input class="form-control filter-input" type="text" placeholder="课程分类">
+                                                            <i class="iconfont icon-search"></i>
+                                                        </div>
+                                                        <ul class="filter-class">
+                                                        </ul>
+                                                    </div>
+                                                    <div class="filter-footer">
+                                                        <button type="button" class="btn btn-success btn-search-class">确定</button>
+                                                        <button type="button" class="btn btn-cancel">取消</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </th>
+                                    <th type="number"><span class="th-coursetime"></span><!-- 课程时长 --></th>
+                                    <th>
+                                        <span>
+                                            <span class="th-coursetype"></span><!-- 课程类型 -->
+                                            <i class="iconfont icon-jiantou  dropdown-toggle btn-filter dn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></i>
+                                            <div class="dropdown-menu filter-component">
+                                                <div class="filter-sort-list"></div>
+                                                <div class="filter-form">
+                                                    <div class="filter-head">
+                                                        <i class="iconfont icon-shaixuan"></i>筛选
+                                                    </div>
+                                                    <div class="filter-body">
+                                                        <div class="filter-search">
+                                                            <input class="form-control filter-input" type="text" placeholder="课程类型">
+                                                            <i class="iconfont icon-search"></i>
+                                                        </div>
+                                                        <ul class="filter-type">
+                                                            <li><label class="checkbox-inline"><input type="checkbox" name="type-input" id="1">内部内训课</label></li>
+                                                            <li><label class="checkbox-inline"><input type="checkbox" name="type-input"  id="2">外采内训课</label></li>
+                                                            <li><label class="checkbox-inline"><input type="checkbox" name="type-input"  id="3">外派公开课</label></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="filter-footer">
+                                                        <button type="button" class="btn btn-success btn-search-type">确定</button>
+                                                        <button type="button" class="btn btn-cancel">取消</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="tablebody">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<input type="hidden" id="state" value="course">
+<!--删除-->
+<div class="modal  fade" id="delcourse" role="dialog">
+    <div class="modal-dialog" style="width:600px;">
+        <div class="modal-content modal-kind-three">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title i18n-delselectedcourse-title" style="text-align:center;"><!-- 是否删除所选课程 --></h4>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn  btn-success col-xs-3 col-xs-offset-3 suredel"><!-- 删除 --></button>
+                <button type="button" class="btn  btn-default col-xs-3 closedel" data-dismiss="modal">
+                    <!-- 取消 --></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 批量导入 START -->
+<div class="modal fade" id="batch-import-modal" data-backdrop="static" role="dialog" aria-labelledby="">
+    <div class="modal-dialog" role="document" style="">
+        <div class="modal-content modal-kind-four">
+            <div class="modal-header">
+                <button class="close cancel-batch-import" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title text-center">批量导入课程</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 转圈圈 -->
+                <i class="loading icon-spinner icon-spin icon-3x batch-loading" style="left: 50%; top: 50%"></i>
+                <div class="form-group batch-import-file">
+                    <div class="col-xs-2">第一步:</div>
+                    <div class="col-xs-8">下载批量导入课程模板(Excel)</div>
+                    <div class="download-template col-xs-2 hand" title="下载模板" style="padding-left: 20px;">下载模板</div>
+                    <br>
+                    <br>
+                    <div class="col-xs-2" style="line-height: 30px">第二步:</div>
+                    <div class="col-xs-8 batch-file-list" style="line-height: 30px">上传课程文件(Excel)</div>
+                    <div id="xls-picker" class="col-xs-2 hand" title="上传人员文件" style="line-height: 30px">
+                        上传文件
+                    </div>
+                </div>
+                <div class="scroll batch-scroll" style="max-height: 300px;width: 100%;overflow-y: scroll;">
+                    <table id="batch-info" class="table table-hover table-bordered">
+                        <tbody>
+                        <tr>
+                            <td class="batch-right-result">[正确]:新增1条记录</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+            <div class="modal-footer">
+                <center>
+                    <button type="button" class="btn btn-success btn-normal batch-import-btn">批量新增</button>
+                    <button type="button" class="btn btn-cancel btn-normal cancel-batch-import " data-dismiss="modal">
+                        关闭
+                    </button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 标记是否上传过文件 -->
+<input type="hidden" id="upload-already" value="false">
+<!-- 批量导入 END -->
+
+<!--设置管理员-->
+<div class="modal fade" id="setmanager" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document" style="width:600px;">
+        <div class="modal-content modal-kind-one">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-center i18n-addadmin-title" id="myModalLabel"><!-- 授权管理员 --></h4>
+            </div>
+            <div class="modal-body managerlist"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success col-xs-2 col-xs-offset-5 tomanager"><!-- 确定 --></button>
+                <button type="button" class="btn btn-success col-xs-2 col-xs-offset-5 hide closetomanager"
+                        data-dismiss="modal">close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--提示信息-->
+<div class="error text-center" style="display:none"><span
+        class="reason"></span></div>
+<div class="right text-center" style="display:none"><span
+        class="success"></span></div>
+<!-- value-当前的页码, pagedone-是否是最后一页(0-不是, 1-是) -->
+<input type="hidden" id="target" value="-1" data-size="0" data-count="0">
+<!--总页数-->
+<input type="hidden" id="pagesize">
+<!-- hit框 -->
+<!-- <div class="hint js-hint"></div> -->
+</body>
+<script src="../../scripts/common/sorttable.js"></script>
+<script src="../../scripts/common/batchimport.js"></script>
+<script src="../../scripts/resource/course.js"></script>

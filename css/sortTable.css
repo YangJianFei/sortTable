@@ -1,0 +1,274 @@
+
+//表格排序样式，过滤组件，条件条儿，更多操作条样式 start
+.dn{
+  display: none !important;
+}
+.tableSortParent{
+/*  overflow: hidden;*/
+}
+.tableSort,table{
+  
+}
+.panel-body .content{
+  min-height: 500px;
+  overflow: hidden;
+}
+.myscroll{
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width:calc(~"100% + 22px");
+  table{
+    width: calc(~"100% - 24px");
+  }
+}
+table{
+  margin:0;
+  thead tr{
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+/*    color: #475059;*/
+    color:#000;
+    cursor: pointer;
+    th{
+      position: relative;
+      font-weight: normal;
+      overflow: visible !important;
+      background: white;
+    }
+  }
+  /*排序样式*/
+  .icon-arrowup{
+    position: absolute;
+    top: 0;
+    font-size: 13px;
+  }
+  .icon-arrowdown{
+    position: absolute;
+    bottom: 0;
+    font-size: 13px;
+  }
+  .iconsort{
+    position: absolute;
+    right: 0;
+    top: 8px;
+    height: 24px;
+    width: 16px;
+    font-size: 13px;
+    color: #b5c3d1;
+    display: none;
+  }
+  th[_sortType='headerSortDown'] .iconsort,th[_sortType='headerSortUp'] .iconsort{
+    display: block;
+  }
+  th[_sortType='headerSortDown'] .icon-arrowup,th[_sortType='headerSortUp'] .icon-arrowdown{
+    color: gray;
+  }
+  /*排序样式*/
+  .icon-jiantou{
+    position: absolute;
+    right: 16px;
+    top: 11px;
+    color: #b5c3d1;
+    font-weight: bold;
+    &:hover{
+      color:#f77975;
+    }
+  }
+  tbody td{
+    border-top:0;
+    border-bottom:1px solid #f5f5f5;
+    font-size: 13px;
+/*    color:#3d5066;*/
+    color:#000;
+  }
+}
+.filter-component{
+  padding:10px 15px;
+  font-size: 13px;
+  right: 0;
+  left:inherit;
+  .filter-body{
+    background: #f7f8fa;
+    padding:10px 15px;
+  }
+  .filter-head{
+    padding:5px 0;
+  }
+  .filter-footer{
+    text-align: right;
+    padding: 5px;
+  }
+  .icon-shaixuan{
+    margin-right:4px;
+  }
+  .filter-input{
+    font-size: 13px;
+    height:30px;
+  }
+  .filter-search{
+    position: relative;
+    margin-bottom: 10px;
+  }
+  .icon-search{
+    font-size: 13px;
+    color: #ddd;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  .filter-class,.filter-type{
+
+  }
+}
+.filter-body>ul{
+  list-style: none;
+  padding: 0;
+  max-height: 222px;
+  overflow: auto;
+  min-width: 150px;
+  margin: 0;
+  li{
+    padding:5px 0;
+  }
+  a{
+    color: #3d5266;
+  }
+  .li-hover{
+    color:#f77975 !important;
+  }
+}
+.filter-time{
+  li{
+    position: relative;
+  }
+  i{
+    position: absolute;
+    left: 10px;
+    top: 15px;
+  }
+  .inputtime{
+    display: inline-block;
+    width: 100%;
+    padding-left: 31px;
+    padding-right: 0;
+  }
+}
+.filter-result{
+  flex: 1;
+  display: flex;
+  //width: calc(~"100% - 315px");
+  align-items: center;
+  margin-right:20px;
+  overflow: hidden;
+  .result-item{
+    display: flex;
+    float: left;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0 10px 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin: 0 5px;
+    overflow: hidden;
+    &:hover{
+      border-color: #f77975;
+      .btn-close-result{
+        background: #f77975;
+        color: white;
+      }
+    }
+  }
+  .filter-more-result{
+    flex: 1;
+    overflow: hidden;
+    .filter-all-result{
+      width: 5000px;
+      overflow: hidden;
+      position: relative;
+    }
+  }
+}
+.result-item {
+  .result-value{
+    color: #f77975;
+  }
+  .btn-close-result{
+    height: 35px;
+    width: 35px;
+    padding: 7px 8px 8px 10px;
+    margin-left:5px;
+    cursor: pointer;
+  }
+}
+.table-operate{
+  display: flex;
+  position: relative;
+  height: 35px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+.iconnav{
+  cursor: pointer;
+  &:hover{
+    color:#df5e5d;
+  }
+}
+.prehide{
+  display: none !important;
+}
+
+/*更多操作样式*/
+.operate-group{
+  height: 35px;
+  background: white;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -10;
+  padding: 6px;
+  left:0;
+  ul{
+    list-style: none;
+    height: 35px;
+    padding: 0;
+    float: left;
+  }
+  a{
+    color: #475059;
+  }
+  li{
+    float: left;
+    padding: 0 14px;
+    position: relative;
+    &:hover a{
+      color: @main-color;
+    }
+    &:before{
+      content: "";
+      width: 1px;
+      height: 67%;
+      display: block;
+      background: #ddd;
+      position: absolute;
+      left: 0;
+      top: 5px;
+    }
+    &:first-child:before{
+      content:none;
+    }
+  }
+}
+.operate-group-show{
+  z-index: 100;
+  display: block !important;
+}
+.btn-remove-operate{
+  float: right;
+  cursor: pointer;
+  &:hover{
+    color: #f77975;
+  }
+}
+//表格排序样式，过滤组件，条件条儿，更多操作条样式 end||||||| .r618
