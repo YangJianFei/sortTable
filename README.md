@@ -1,6 +1,6 @@
 # sortTable
 一个表格排序插件
-##HTML
+## HTML
 ```
 <div class="tableSortParent"><!--如果需要显示排序结果条在表格上方则需要这个父class-->
   <div class="table-operate"><!--排序结果条显示-->
@@ -46,8 +46,8 @@
       </tbody>
   </table>
 </div>
-
-##当进行增删查改时要更新表数据。不然点击排序用的缓存数据
-
+```
+## 当进行增删查改时要更新表数据。不然点击排序用的缓存数据
+```
 $(".tableSort").updateTable();
 ```
